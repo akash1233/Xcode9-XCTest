@@ -30,7 +30,11 @@ class Xcode9_XCTestUITests: XCTestCase {
     }
     
     func testXCUISiriService() {
-        XCUIDevice().siriService.activate(voiceRecognitionText: "Open News")
+        if #available(iOS 10.3, *) {
+            XCUIDevice().siriService.activate(voiceRecognitionText: "Open News")
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func testXCWaiterfeatures() {
@@ -58,7 +62,7 @@ class Xcode9_XCTestUITests: XCTestCase {
         }
         
         XCTContext.runActivity(named: "Then I should see new features of XCTest") { _ in
-            let newXCTestFeatures = XCUIApplication().staticTexts["There is a lot"]
+            let newXCTestFeatures = XCUIApplication().staticTexts["There is a lot more to offer"]
             newXCTestFeatures.tap()
             XCTAssertTrue(newXCTestFeatures.exists)
         }
