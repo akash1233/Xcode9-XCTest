@@ -12,6 +12,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var xctestLabel: UILabel!
     @IBAction func whatNewButton(_ sender: Any) {
+        xctestLabel.text = "There is a lot more to offer"
+        
+    }
+    @IBAction func iosciLabel(_ sender: Any) {
         xctestLabel.text = "There is a lot"
         
     }
